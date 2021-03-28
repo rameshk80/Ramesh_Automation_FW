@@ -1,8 +1,10 @@
 
-public class KeywordsImplementation {
-    public void Login()
+public class KeywordsImplementation extends Main {
+    public void Login(String username)
     {
-        System.out.println("Login");
+        objDriverFactory.findElementById("identifierId");
+        objDriverFactory.sendValue(username);
+        System.out.println("Login: username is " + username);
     }
     public void VerifyLoginSuccess()
     {

@@ -8,7 +8,7 @@ public class Main {
     protected static Configuration config;
     protected static WebDriver driver;
     protected static Properties properties;
-    private static WebdriverFactory objDriverFactory;
+    protected static WebdriverFactory objDriverFactory;
     protected static Execute execute = new Execute();
 
     public static void main(String[] args) throws InterruptedException {
@@ -18,12 +18,13 @@ public class Main {
 
         ExcelFileAccess file = new ExcelFileAccess();
         ArrayList<TestCase> allTestCases = file.readAllTestCases();
-        execute.executeKeywords(allTestCases);
 
         objDriverFactory = new WebdriverFactory();
         objDriverFactory.initializeWebdriver();
-
         objDriverFactory.navigateTo();
+
+        execute.executeKeywords(allTestCases);
+
         Thread.sleep(4000);
         objDriverFactory.quit();
     }

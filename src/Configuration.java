@@ -40,7 +40,8 @@ public class Configuration extends Main{
     public void initializeConfiguration() {
         try
         {
-            properties.load(new FileInputStream("/Users/rasandesh/Code/Java/src/SelWork/config.properties"));
+            System.out.println(System.getProperty("user.dir"));
+            properties.load(new FileInputStream("./src/config.properties"));
         }
         catch(FileNotFoundException exception)
         {

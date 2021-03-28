@@ -1,14 +1,12 @@
 
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Properties;
-
 public class WebdriverFactory extends Main{
+
+    WebElement currentElement;
 
     public WebdriverFactory() {
         config = new Configuration();
@@ -29,13 +27,25 @@ public class WebdriverFactory extends Main{
         }
     }
 
-    public void navigateTo()
-    {
+    public void navigateTo() {
         this.driver.get(config.getApplication_url());
     }
     public void navigateTo(String url)
     {
         this.driver.get(url);
+    }
+
+    public void findElement(String element) {
+        this.driver.findElement(By.id(element));
+    }
+
+    public void findElementById(String element) {
+        currentElement =  this.driver.findElement(By.id(element));
+    }
+
+    public void sendValue(String value){
+        this.currentElement.sendKeys(value);
+        currentElement = null;
     }
 
     public void quit()
